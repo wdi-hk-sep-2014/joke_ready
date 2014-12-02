@@ -1,7 +1,7 @@
 class CreateProgrammers < ActiveRecord::Migration
   def change
     create_table :programmers do |t|
-      t.text :name
+      t.string :name
       t.string :email
 
       t.timestamps

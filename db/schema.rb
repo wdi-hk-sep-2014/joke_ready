@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20141202043046) do
   end
 
   create_table "programmers", force: true do |t|
-    t.text     "name"
+    t.string   "name"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
