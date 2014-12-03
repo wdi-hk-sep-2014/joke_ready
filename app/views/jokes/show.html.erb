@@ -3,6 +3,13 @@
 <p>
   <strong>Description:</strong>
   <%= @joke.description %>
+  <div class="thumb_buttons">
+    <%= link_to 'thumb_up', thumb_up_joke_path(@joke) %>
+    <%= @joke.thumb_up %>
+    <%= link_to 'thumb_down', thumb_down_joke_path(@joke) %>
+    <%= @joke.thumb_down %>
+
+  </div>
 </p>
 
 <%= link_to 'Edit', edit_joke_path(@joke) %> |

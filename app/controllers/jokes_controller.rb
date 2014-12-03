@@ -3,6 +3,39 @@ class JokesController < ApplicationController
 
   # GET /jokes
   # GET /jokes.json
+
+  def thumb_up
+    @joke = Joke.find(params[:id])
+    @ip_address = request.remote_ip
+    votes = @joke.votes
+    count = votes.where(ip_address: @ip_address).count
+    if count == 0
+      @joke.thumb_up += 1
+      @vote = Vote.new
+      @vote.joke = @joke
+      @vote.ip_address = request.remote_ip
+      @vote.save
+      @joke.save
+    end
+    redirect_to joke_path
+  end
+
+  def thumb_down
+    @joke = Joke.find(params[:id])
+    @ip_address = request.remote_ip
+    votes = @joke.votes
+    count = votes.where(ip_address: @ip_address).count
+    if count == 0
+      @joke.thumb_down += 1
+      @vote = Vote.new
+      @vote.joke = @joke
+      @vote.ip_address = request.remote_ip
+      @vote.save
+      @joke.save
+    end
+    redirect_to joke_path
+  end
+
   def index
     @jokes = Joke.all
   end
@@ -25,6 +58,8 @@ class JokesController < ApplicationController
   # POST /jokes.json
   def create
     @joke = Joke.new(joke_params)
+    @joke.thumb_up = 0
+    @joke.thumb_down = 0
 
     respond_to do |format|
       if @joke.save

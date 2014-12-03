@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  resources :jokes
+  resources :jokes do
+    member do
+      get 'thumb_up'
+      get 'thumb_down'
+    end
+
+  end
+
 
   resources :programmers
 
