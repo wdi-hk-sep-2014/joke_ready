@@ -1,17 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= image_tag @joke.image %>
-  <%= @joke.description %>
+<div id="container">
   <div class="thumb_buttons">
     <%= link_to 'thumb_up', thumb_up_joke_path(@joke) %>
     <%= @joke.thumb_up %>
     <%= link_to 'thumb_down', thumb_down_joke_path(@joke) %>
     <%= @joke.thumb_down %>
-
   </div>
-</p>
-
-<%= link_to 'Edit', edit_joke_path(@joke) %> |
-<%= link_to 'Back', jokes_path %>
+  <div id="image">
+    <%= image_tag @joke.image %>
+  </div>
+</div>
