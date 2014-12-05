@@ -1,39 +1,53 @@
 class JokesController < ApplicationController
-  before_action :set_joke, only: [:show, :edit, :update, :destroy]
+  before_action :set_joke, only: [:show, :edit, :update, :destroy, :thumb_up, :thumb_down]
 
   # GET /jokes
   # GET /jokes.json
 
+  def random
+    @ip_address = request.remote_ip
+    @joke_id = @joke.id
+    # 1. Find the joke without any vote
+    @random_joke = Joke.includes(:votes).where(:votes => {:joke_id => nil}).sample
+    if @random_joke
+      @random_joke.id
+    # 2. Find the joke I didn't vote
+    else
+      Joke.includes(:votes).where.not(votes: {ip_address: @ip_address}).first.id
+    # 3. Ask the user to create joke, if I voted all already
+    end
+  end
+
   def thumb_up
-    @joke = Joke.find(params[:id])
     @ip_address = request.remote_ip
     votes = @joke.votes
     count = votes.where(ip_address: @ip_address).count
     if count == 0
-      @joke.thumb_up += 1
-      @vote = Vote.new
-      @vote.joke = @joke
-      @vote.ip_address = request.remote_ip
+      @vote            = Vote.new
+      @vote.joke       = @joke
+      @vote.ip_address = @ip_address
       @vote.save
+
+      @joke.thumb_up += 1
       @joke.save
     end
-    redirect_to joke_path
+    redirect_to joke_path(random)
   end
 
   def thumb_down
-    @joke = Joke.find(params[:id])
     @ip_address = request.remote_ip
     votes = @joke.votes
     count = votes.where(ip_address: @ip_address).count
     if count == 0
-      @joke.thumb_down += 1
-      @vote = Vote.new
-      @vote.joke = @joke
+      @vote            = Vote.new
+      @vote.joke       = @joke
       @vote.ip_address = request.remote_ip
       @vote.save
+
+      @joke.thumb_down += 1
       @joke.save
     end
-    redirect_to joke_path
+    redirect_to joke_path(random)
   end
 
   def index

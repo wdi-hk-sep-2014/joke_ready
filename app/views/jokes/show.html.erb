@@ -2,6 +2,7 @@
 
 <p>
   <strong>Description:</strong>
+  <%= image_tag @joke.image %>
   <%= @joke.description %>
   <div class="thumb_buttons">
     <%= link_to 'thumb_up', thumb_up_joke_path(@joke) %>
