@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   end
 
-
   resources :programmers
 
   # The priority is based upon order of creation: first created -> highest priority.

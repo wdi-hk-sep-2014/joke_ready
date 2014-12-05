@@ -51,6 +51,7 @@ class JokesController < ApplicationController
   end
 
   def index
+    @joke = Joke.new
     @jokes = Joke.all
   end
 
@@ -118,6 +119,6 @@ class JokesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def joke_params
-      params.require(:joke).permit(:description)
+      params.require(:joke).permit(:description, :image)
     end
 end
