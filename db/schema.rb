@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20141203070409) do
 
   create_table "jokes", force: true do |t|
+    t.string   "image"
     t.string   "description"
     t.integer  "thumb_up"
     t.integer  "thumb_down"
