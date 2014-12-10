@@ -50,9 +50,13 @@ class JokesController < ApplicationController
     redirect_to joke_path(random)
   end
 
+  def funniest_joke
+    @funniest_joke_id = Joke.all.sort_by(&:likeness2).last.id
+  end
+
   def index
     @joke = Joke.new
-    @jokes = Joke.all
+    redirect_to joke_path(funniest_joke)
   end
 
   # GET /jokes/1
