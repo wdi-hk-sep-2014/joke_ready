@@ -6,15 +6,19 @@ class JokesController < ApplicationController
 
   def random
     @ip_address = request.remote_ip
-    @joke_id = @joke.id
-    # 1. Find the joke without any vote
     @random_joke = Joke.includes(:votes).where(:votes => {:joke_id => nil}).sample
+    @joke_i_vote = Vote.where(ip_address: @ip_address).pluck(:joke_id)
+    @joke_without_my_vote = Joke.where.not(id: @joke_i_vote)
+
     if @random_joke
+    # 1. Find the joke without any votes
       @random_joke.id
+    elsif @joke_without_my_vote.count > 0
     # 2. Find the joke I didn't vote
+      @joke_without_my_vote.first.id
     else
-      Joke.includes(:votes).where.not(votes: {ip_address: @ip_address}).first.id
     # 3. Ask the user to create joke, if I voted all already
+      0
     end
   end
 
@@ -22,6 +26,7 @@ class JokesController < ApplicationController
     @ip_address = request.remote_ip
     votes = @joke.votes
     count = votes.where(ip_address: @ip_address).count
+
     if count == 0
       @vote            = Vote.new
       @vote.joke       = @joke
@@ -31,13 +36,19 @@ class JokesController < ApplicationController
       @joke.thumb_up += 1
       @joke.save
     end
-    redirect_to joke_path(random)
+
+    if random > 0
+      redirect_to joke_path(random)
+    else
+      render "running_out_of_joke"
+    end
   end
 
   def thumb_down
     @ip_address = request.remote_ip
     votes = @joke.votes
     count = votes.where(ip_address: @ip_address).count
+
     if count == 0
       @vote            = Vote.new
       @vote.joke       = @joke
@@ -47,11 +58,16 @@ class JokesController < ApplicationController
       @joke.thumb_down += 1
       @joke.save
     end
-    redirect_to joke_path(random)
+
+    if random > 0
+      redirect_to joke_path(random)
+    else
+      render "running_out_of_joke"
+    end
   end
 
   def funniest_joke
-    @funniest_joke_id = Joke.all.sort_by(&:likeness2).last.id
+    @funniest_joke_id = Joke.all.sort_by(&:likeness).last.id
   end
 
   def index
