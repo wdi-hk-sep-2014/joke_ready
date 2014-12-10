@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     member do
       get 'thumb_up'
       get 'thumb_down'
+      get 'running_out_of_joke'
     end
 
   end
