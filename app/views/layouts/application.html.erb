@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <title>Joke.Ready</title>
+    <title>Joke.ready = true</title>
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
 
@@ -19,15 +19,15 @@
           </div>
 
           <div class="modal-body">
-            <%= form_for @joke, :html => {:multipart => true} do |f| %>
+            <%= form_for Joke.new, :html => {:multipart => true} do |f| %>
               <p><%= f.file_field :image %></p>
-              <p><%= f.submit %></p>
+              <p><%= f.hidden_field :description %></p>
+              <p><%= f.submit "Submit Joke" %></p>
             <% end %>
           </div>
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">You don't have joke :(</button>
           </div>
         </div>
       </div>

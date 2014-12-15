@@ -101,7 +101,7 @@ class JokesController < ApplicationController
         format.html { redirect_to @joke, notice: 'Joke was successfully created.' }
         format.json { render :show, status: :created, location: @joke }
       else
-        format.html { render :new }
+        format.html { render 'pretend_to_have_joke' }
         format.json { render json: @joke.errors, status: :unprocessable_entity }
       end
     end
