@@ -2,6 +2,79 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.thumb_buttons {
+.joke_container {
+  width: 1140px;
+  float: right;
+  }
+
+.thumb_buttons_container {
+  margin-left: 245px;
+  margin-top: 30px;
+  height: 200px;
+  width: 700px;
+  top: 20px;
+  }
+
+.thumbup_button_container {
+  border: 10px;
+  border-style: solid;
+  border-radius: 60px;
+  float: left;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  }
+
+.thumbdown_button_container {
+  border: 10px;
+  border-style: solid;
+  border-radius: 60px;
+  float: left;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  margin-bottom: 10px;
+  }
+
+.thumbup_button {
+  float: left;
+  margin: 25px;
+  }
+
+.thumbup_button_count {
+  float: left;
+  font-size: 150px;
+  margin-right: 10px;
+  }
+
+.thumbdown_button {
+  float: left;
+  margin-top: 50px;
+  margin-left: 25px;
+  margin-right: 25px;
+  }
+
+.thumbdown_button_count {
+  float: left;
+  font-size: 150px;
+  margin-right: 25px;
+  }
+
+.joke_image {
   text-align: center;
+  clear: both;
+}
+
+.joke_image > img {
+  margin-top: 20px;
+}
+
+.laughing_face {
+  padding: 30px;
+}
+
+.no_more_joke {
+  font-size: 35px;
+}
+
+#no_joke_header {
+  margin: 20px;
 }

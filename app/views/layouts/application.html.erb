@@ -8,19 +8,18 @@
 
   <body>
     <div id="sidebar">
-      <button id="submit_joke_button" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">submit your joke</button>
+      <button id="submit_joke_button" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Submit your joke</br>HERE</button>
 
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            <h4 class="modal-title" id="myModalLabel">Are you laughing now? Don't submit if you are not.</h4>
           </div>
 
           <div class="modal-body">
             <%= form_for @joke, :html => {:multipart => true} do |f| %>
-              <p><%= f.text_field :description %></p>
               <p><%= f.file_field :image %></p>
               <p><%= f.submit %></p>
             <% end %>
