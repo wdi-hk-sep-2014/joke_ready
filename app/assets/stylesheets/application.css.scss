@@ -17,18 +17,33 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-#sidebar {
-  position:absolute;
+.navbar {
+  position:fixed;
   top:0; bottom:0; left:0;
   width:300px;
   background:#000;
 }
 
-#submit_joke_button {
-  margin-top: 50px;
-  margin-left: 30px;
+.joke_function {
+  font-size: 30px;
+  text-align: center;
+  margin: 20px 5px 20px 5px;
+  color: yellow;
+}
+
+.navbar_buttons {
+  margin: 16px;
+  font-size: 30px;
+  font-family: arial;
+  background-color: yellow;
+  color: black;
+  width: 260px;
 }
 
 #content {
   margin-left: 500px;
+}
+
+.modal {
+  font-size: 100px;
 }

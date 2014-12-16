@@ -1,13 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="joke_container">
 
-<div id="container">
-  <div class="thumb_buttons">
-    <%= link_to 'thumb_up', thumb_up_joke_path(@joke) %>
-    <%= @joke.thumb_up %>
-    <%= link_to 'thumb_down', thumb_down_joke_path(@joke) %>
-    <%= @joke.thumb_down %>
+  <div class="thumb_buttons_container">
+    <div class="thumbup_button_container">
+      <div class="thumbup_button">
+        <%= link_to image_tag("thumb_up.png", :size => "150x150"), thumb_up_joke_path(@joke), :class => "button", :method => :get %>
+      </div>
+      <div class="thumbup_button_count">
+        <%= @joke.thumb_up %>
+      </div>
+    </div>
+    <div class="thumbdown_button_container">
+      <div class="thumbdown_button">
+        <%= link_to image_tag("thumb_down.png", :size => "150x150"), thumb_down_joke_path(@joke), :class => "button", :method => :get %>
+      </div>
+      <div class="thumbdown_button_count">
+        <%= @joke.thumb_down %>
+      </div>
+    </div>
   </div>
-  <div id="image">
+  <div class="joke_image">
     <%= image_tag @joke.image %>
+  </div>
+    <div class="thumb_buttons_container">
+    <div class="thumbup_button_container">
+      <div class="thumbup_button">
+        <%= link_to image_tag("thumb_up.png", :size => "150x150"), thumb_up_joke_path(@joke), :class => "button", :method => :get %>
+      </div>
+      <div class="thumbup_button_count">
+        <%= @joke.thumb_up %>
+      </div>
+    </div>
+    <div class="thumbdown_button_container">
+      <div class="thumbdown_button">
+        <%= link_to image_tag("thumb_down.png", :size => "150x150"), thumb_down_joke_path(@joke), :class => "button", :method => :get %>
+      </div>
+      <div class="thumbdown_button_count">
+        <%= @joke.thumb_down %>
+      </div>
+    </div>
   </div>
 </div>
