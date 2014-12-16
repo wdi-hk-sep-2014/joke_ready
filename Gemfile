@@ -22,7 +22,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
 gem 'carrierwave'
-
+gem 'aws-sdk'
 gem 'fog'
 
 gem 'mini_magick'
