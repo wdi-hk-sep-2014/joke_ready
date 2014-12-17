@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :programmers
   resources :jokes do
     member do
       get 'thumb_up'
