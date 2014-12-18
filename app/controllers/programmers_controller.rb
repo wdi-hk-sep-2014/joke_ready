@@ -1,5 +1,5 @@
 class ProgrammersController < ApplicationController
-  before_action :authenticate_programmer!, :set_programmer, only: [:show, :edit, :update, :destroy]
+  before_action :set_programmer, only: [:show, :edit, :update, :destroy]
 
   # GET /programmers
   # GET /programmers.json
