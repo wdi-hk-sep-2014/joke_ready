@@ -25,6 +25,10 @@ gem 'carrierwave'
 
 gem 'mini_magick'
 
+gem 'devise'
+
+gem 'omniauth-github'
+
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
